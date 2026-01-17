@@ -91,17 +91,20 @@ const Index = () => {
     {
       icon: 'Brain',
       title: 'Адаптивный разум',
-      description: 'Интерфейсы, которые думают вместе с пользователем'
+      description: 'Интерфейсы, которые думают вместе с пользователем',
+      image: 'https://cdn.poehali.dev/projects/01771b31-7832-47b1-b7ab-dce68b7575ce/files/44ce0f80-ca68-4e1a-b674-b09ee2e6c052.jpg'
     },
     {
       icon: 'Eye',
       title: 'Цифровая эстетика',
-      description: 'Визуальная гармония на стыке искусства и технологий'
+      description: 'Визуальная гармония на стыке искусства и технологий',
+      image: 'https://cdn.poehali.dev/projects/01771b31-7832-47b1-b7ab-dce68b7575ce/files/44ce0f80-ca68-4e1a-b674-b09ee2e6c052.jpg'
     },
     {
       icon: 'Cpu',
       title: 'Безупречный код',
-      description: 'Производительность и масштабируемость в каждой строке'
+      description: 'Производительность и масштабируемость в каждой строке',
+      image: 'https://cdn.poehali.dev/projects/01771b31-7832-47b1-b7ab-dce68b7575ce/files/44ce0f80-ca68-4e1a-b674-b09ee2e6c052.jpg'
     }
   ];
 
@@ -147,14 +150,14 @@ const Index = () => {
 
       <div className="relative z-10">
         <nav className="fixed top-0 left-0 right-0 z-50 glass-morph border-b border-neon-cyan/20">
-          <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="max-w-[1440px] mx-auto px-10 py-4 flex items-center justify-between">
             <div className="text-2xl font-bold gradient-text">NEXUS</div>
             <div className="hidden md:flex gap-8 items-center">
               <a href="#philosophy" className="text-sm hover:text-neon-cyan transition-colors">Философия</a>
               <a href="#services" className="text-sm hover:text-neon-cyan transition-colors">Услуги</a>
               <a href="#portfolio" className="text-sm hover:text-neon-cyan transition-colors">Портфолио</a>
               <a href="#contact" className="text-sm hover:text-neon-cyan transition-colors">Контакты</a>
-              <Button className="bg-neon-cyan text-deep-black hover:bg-neon-cyan/90 neon-border">
+              <Button className="bg-neon-cyan text-deep-black hover:bg-neon-cyan/90 neon-border rounded-[14px]">
                 Запустить проект
               </Button>
             </div>
@@ -167,12 +170,12 @@ const Index = () => {
           </div>
           {mobileMenuOpen && (
             <div className="md:hidden glass-morph border-t border-neon-cyan/20 animate-slide-in">
-              <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              <div className="max-w-[1440px] mx-auto px-10 py-4 flex flex-col gap-4">
                 <a href="#philosophy" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Философия</a>
                 <a href="#services" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Услуги</a>
                 <a href="#portfolio" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Портфолио</a>
                 <a href="#contact" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Контакты</a>
-                <Button className="bg-neon-cyan text-deep-black hover:bg-neon-cyan/90 neon-border w-full">
+                <Button className="bg-neon-cyan text-deep-black hover:bg-neon-cyan/90 neon-border w-full rounded-[14px]">
                   Запустить проект
                 </Button>
               </div>
@@ -180,15 +183,15 @@ const Index = () => {
           )}
         </nav>
 
-        <section ref={heroRef} className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
+        <section ref={heroRef} className="min-h-screen flex items-center px-10 pt-20 relative">
           <div 
-            className="container mx-auto text-center animate-fade-in"
+            className="max-w-[1440px] mx-auto text-left animate-fade-in"
             style={{
               transform: `translateY(${scrollY * 0.3}px)`,
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow">
+            <h1 className="text-6xl md:text-8xl font-bold mb-6">
               Сайты для эпохи
               <br />
               <span className="gradient-text">после завтра</span>
@@ -198,12 +201,12 @@ const Index = () => {
                 {words[currentWord]}
               </span>
             </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
+            <p className="text-xl text-muted-foreground max-w-2xl mb-12">
               Мы создаём не просто сайты, а цифровые произведения искусства в стиле ближайшего будущего
             </p>
             <Button 
               size="lg" 
-              className="bg-gradient-to-r from-neon-cyan to-neon-purple text-white hover:opacity-90 transition-opacity px-12 py-6 text-lg rounded-full neon-border group"
+              className="bg-gradient-to-r from-neon-cyan to-neon-purple text-white hover:opacity-90 transition-opacity px-12 py-6 text-lg rounded-[14px] neon-border group"
             >
               Запустить проект
               <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -211,16 +214,16 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="philosophy" className="py-32 px-6 scroll-mt-20">
+        <section id="philosophy" className="py-32 px-10 scroll-mt-20">
           <div 
-            className="container mx-auto"
+            className="max-w-[1440px] mx-auto"
             style={{
               transform: `translateY(${Math.max(0, scrollY - 400) * 0.1}px)`,
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <h2 className="text-5xl font-bold text-center mb-4 gradient-text">Наша философия</h2>
-            <p className="text-center text-muted-foreground mb-20 text-lg">Три принципа создания цифровых продуктов</p>
+            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Наша философия</h2>
+            <p className="text-left text-muted-foreground mb-20 text-lg">Три принципа создания цифровых продуктов</p>
             
             <div className="grid md:grid-cols-3 gap-8">
               {philosophy.map((item, index) => (
@@ -228,10 +231,12 @@ const Index = () => {
                   key={index}
                   className="glass-morph p-8 group hover:neon-border transition-all duration-300 cursor-pointer hover:scale-105"
                 >
-                  <div className="mb-6 inline-block">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center group-hover:animate-float">
-                      <Icon name={item.icon} size={32} className="text-white" />
-                    </div>
+                  <div className="mb-6">
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-24 h-24 object-contain group-hover:animate-float"
+                    />
                   </div>
                   <h3 className="text-2xl font-semibold mb-4 text-neon-cyan">{item.title}</h3>
                   <p className="text-muted-foreground">{item.description}</p>
@@ -241,10 +246,10 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="services" className="py-32 px-6 bg-gradient-to-b from-background to-neon-cyan/5">
-          <div className="container mx-auto">
-            <h2 className="text-5xl font-bold text-center mb-4 gradient-text">Услуги</h2>
-            <p className="text-center text-muted-foreground mb-20 text-lg">Полный цикл разработки цифровых продуктов</p>
+        <section id="services" className="py-32 px-10 bg-gradient-to-b from-background to-neon-cyan/5">
+          <div className="max-w-[1440px] mx-auto">
+            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Услуги</h2>
+            <p className="text-left text-muted-foreground mb-20 text-lg">Полный цикл разработки цифровых продуктов</p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
@@ -273,10 +278,10 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="portfolio" className="py-32 px-6">
-          <div className="container mx-auto">
-            <h2 className="text-5xl font-bold text-center mb-4 gradient-text">Портфолио</h2>
-            <p className="text-center text-muted-foreground mb-20 text-lg">Проекты, которые вдохновляют</p>
+        <section id="portfolio" className="py-32 px-10">
+          <div className="max-w-[1440px] mx-auto">
+            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Портфолио</h2>
+            <p className="text-left text-muted-foreground mb-20 text-lg">Проекты, которые вдохновляют</p>
             
             <div className="grid md:grid-cols-2 gap-8">
               {portfolio.map((project, index) => (
@@ -303,12 +308,12 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="contact" className="py-32 px-6 bg-gradient-to-t from-background to-neon-purple/5">
-          <div className="container mx-auto max-w-2xl">
-            <h2 className="text-5xl font-bold text-center mb-4 gradient-text">Начнём проект</h2>
-            <p className="text-center text-muted-foreground mb-12 text-lg">Расскажите о вашей идее, и мы воплотим её в реальность</p>
+        <section id="contact" className="py-32 px-10 bg-gradient-to-t from-background to-neon-purple/5">
+          <div className="max-w-[1440px] mx-auto">
+            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Начнём проект</h2>
+            <p className="text-left text-muted-foreground mb-12 text-lg max-w-2xl">Расскажите о вашей идее, и мы воплотим её в реальность</p>
             
-            <Card className="glass-morph p-8 neon-border">
+            <Card className="glass-morph p-8 neon-border max-w-2xl rounded-[14px]">
               <form className="space-y-6">
                 <div className="space-y-2">
                   <label className="text-sm text-neon-cyan">Ваше имя</label>
@@ -337,7 +342,7 @@ const Index = () => {
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple text-white hover:opacity-90 transition-opacity py-6 text-lg rounded-full"
+                  className="w-full bg-gradient-to-r from-neon-cyan to-neon-purple text-white hover:opacity-90 transition-opacity py-6 text-lg rounded-[14px]"
                 >
                   Отправить заявку
                   <Icon name="Send" className="ml-2" />
@@ -345,9 +350,9 @@ const Index = () => {
               </form>
             </Card>
 
-            <div className="mt-12 text-center">
+            <div className="mt-12 text-left max-w-2xl">
               <p className="text-muted-foreground mb-4">Или свяжитесь с нами напрямую</p>
-              <div className="flex justify-center gap-8">
+              <div className="flex justify-start gap-8">
                 <a href="mailto:hello@nexus.dev" className="text-neon-cyan hover:text-neon-purple transition-colors">
                   hello@nexus.dev
                 </a>
@@ -359,8 +364,8 @@ const Index = () => {
           </div>
         </section>
 
-        <footer className="py-12 px-6 border-t border-neon-cyan/20">
-          <div className="container mx-auto">
+        <footer className="py-12 px-10 border-t border-neon-cyan/20">
+          <div className="max-w-[1440px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-2xl font-bold gradient-text">NEXUS</div>
               <div className="text-muted-foreground text-sm">
