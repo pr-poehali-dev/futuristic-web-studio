@@ -131,22 +131,7 @@ const Index = () => {
           }}
         />
       ))}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neon-cyan/5 via-background to-background pointer-events-none" />
-      
-      <div className="fixed inset-0 opacity-20 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-neon-cyan rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
+
 
       <div className="relative z-10">
         <nav className="fixed top-0 left-0 right-0 z-50 glass-morph border-b border-neon-cyan/20">
@@ -191,7 +176,7 @@ const Index = () => {
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6">
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white">
               Сайты для эпохи
               <br />
               <span className="gradient-text">после завтра</span>
@@ -201,7 +186,7 @@ const Index = () => {
                 {words[currentWord]}
               </span>
             </div>
-            <p className="text-xl text-muted-foreground max-w-2xl mb-12">
+            <p className="text-xl text-white/80 max-w-2xl mb-12">
               Мы создаём не просто сайты, а цифровые произведения искусства в стиле ближайшего будущего
             </p>
             <Button 
@@ -222,8 +207,8 @@ const Index = () => {
               transition: 'transform 0.1s ease-out'
             }}
           >
-            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Наша философия</h2>
-            <p className="text-left text-muted-foreground mb-20 text-lg">Три принципа создания цифровых продуктов</p>
+            <h2 className="text-5xl font-bold text-left mb-4 text-white">Наша философия</h2>
+            <p className="text-left text-white/80 mb-20 text-lg">Три принципа создания цифровых продуктов</p>
             
             <div className="grid md:grid-cols-3 gap-8">
               {philosophy.map((item, index) => (
@@ -238,8 +223,8 @@ const Index = () => {
                       className="w-24 h-24 object-contain group-hover:animate-float"
                     />
                   </div>
-                  <h3 className="text-2xl font-semibold mb-4 text-neon-cyan">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h3 className="text-2xl font-semibold mb-4 text-white">{item.title}</h3>
+                  <p className="text-white/70">{item.description}</p>
                 </Card>
               ))}
             </div>
@@ -248,8 +233,8 @@ const Index = () => {
 
         <section id="services" className="py-32 px-10 bg-gradient-to-b from-background to-neon-cyan/5">
           <div className="max-w-[1440px] mx-auto">
-            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Услуги</h2>
-            <p className="text-left text-muted-foreground mb-20 text-lg">Полный цикл разработки цифровых продуктов</p>
+            <h2 className="text-5xl font-bold text-left mb-4 text-white">Услуги</h2>
+            <p className="text-left text-white/80 mb-20 text-lg">Полный цикл разработки цифровых продуктов</p>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {services.map((service, index) => (
@@ -270,8 +255,8 @@ const Index = () => {
                       }`}
                     />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
+                  <p className="text-white/70 text-sm">{service.description}</p>
                 </Card>
               ))}
             </div>
@@ -280,8 +265,8 @@ const Index = () => {
 
         <section id="portfolio" className="py-32 px-10">
           <div className="max-w-[1440px] mx-auto">
-            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Портфолио</h2>
-            <p className="text-left text-muted-foreground mb-20 text-lg">Проекты, которые вдохновляют</p>
+            <h2 className="text-5xl font-bold text-left mb-4 text-white">Портфолио</h2>
+            <p className="text-left text-white/80 mb-20 text-lg">Проекты, которые вдохновляют</p>
             
             <div className="grid md:grid-cols-2 gap-8">
               {portfolio.map((project, index) => (
@@ -296,7 +281,7 @@ const Index = () => {
                   <div className={`h-64 bg-gradient-to-br ${project.color} opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
                   <div className="p-8">
                     <div className="text-sm text-neon-cyan mb-2">{project.category}</div>
-                    <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+                    <h3 className="text-3xl font-bold mb-4 text-white">{project.title}</h3>
                     <Button variant="ghost" className="text-neon-cyan group-hover:translate-x-2 transition-transform">
                       Смотреть кейс
                       <Icon name="ArrowRight" className="ml-2" />
@@ -310,8 +295,8 @@ const Index = () => {
 
         <section id="contact" className="py-32 px-10 bg-gradient-to-t from-background to-neon-purple/5">
           <div className="max-w-[1440px] mx-auto">
-            <h2 className="text-5xl font-bold text-left mb-4 gradient-text">Начнём проект</h2>
-            <p className="text-left text-muted-foreground mb-12 text-lg max-w-2xl">Расскажите о вашей идее, и мы воплотим её в реальность</p>
+            <h2 className="text-5xl font-bold text-left mb-4 text-white">Начнём проект</h2>
+            <p className="text-left text-white/80 mb-12 text-lg max-w-2xl">Расскажите о вашей идее, и мы воплотим её в реальность</p>
             
             <Card className="glass-morph p-8 neon-border max-w-2xl rounded-[14px]">
               <form className="space-y-6">
@@ -351,7 +336,7 @@ const Index = () => {
             </Card>
 
             <div className="mt-12 text-left max-w-2xl">
-              <p className="text-muted-foreground mb-4">Или свяжитесь с нами напрямую</p>
+              <p className="text-white/80 mb-4">Или свяжитесь с нами напрямую</p>
               <div className="flex justify-start gap-8">
                 <a href="mailto:hello@nexus.dev" className="text-neon-cyan hover:text-neon-purple transition-colors">
                   hello@nexus.dev
@@ -368,7 +353,7 @@ const Index = () => {
           <div className="max-w-[1440px] mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-2xl font-bold gradient-text">NEXUS</div>
-              <div className="text-muted-foreground text-sm">
+              <div className="text-white/70 text-sm">
                 © 2026 Nexus Digital Studio. Создаём будущее сегодня.
               </div>
               <div className="flex gap-6">
