@@ -12,6 +12,8 @@ const Index = () => {
   const [currentWord, setCurrentWord] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursorTrail, setCursorTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,6 +29,32 @@ const Index = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+      setCursorTrail(prev => [
+        ...prev.slice(-8),
+        { x: e.clientX, y: e.clientY, id: Date.now() }
+      ]);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector((link as HTMLAnchorElement).getAttribute('href')!);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setMobileMenuOpen(false);
+        }
+      });
+    });
   }, []);
 
   const services = [
@@ -78,7 +106,28 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-hidden cursor-none">
+      <div
+        className="fixed w-6 h-6 rounded-full border-2 border-neon-cyan pointer-events-none z-[9999] mix-blend-difference transition-transform duration-100"
+        style={{
+          left: `${cursorPos.x}px`,
+          top: `${cursorPos.y}px`,
+          transform: 'translate(-50%, -50%)'
+        }}
+      />
+      {cursorTrail.map((trail, index) => (
+        <div
+          key={trail.id}
+          className="fixed w-2 h-2 rounded-full bg-neon-cyan pointer-events-none z-[9998]"
+          style={{
+            left: `${trail.x}px`,
+            top: `${trail.y}px`,
+            transform: 'translate(-50%, -50%)',
+            opacity: (index + 1) / cursorTrail.length * 0.4,
+            transition: 'opacity 0.3s ease-out'
+          }}
+        />
+      ))}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neon-cyan/5 via-background to-background pointer-events-none" />
       
       <div className="fixed inset-0 opacity-20 pointer-events-none">
@@ -101,6 +150,7 @@ const Index = () => {
           <div className="container mx-auto px-6 py-4 flex items-center justify-between">
             <div className="text-2xl font-bold gradient-text">NEXUS</div>
             <div className="hidden md:flex gap-8 items-center">
+              <a href="#philosophy" className="text-sm hover:text-neon-cyan transition-colors">Философия</a>
               <a href="#services" className="text-sm hover:text-neon-cyan transition-colors">Услуги</a>
               <a href="#portfolio" className="text-sm hover:text-neon-cyan transition-colors">Портфолио</a>
               <a href="#contact" className="text-sm hover:text-neon-cyan transition-colors">Контакты</a>
@@ -118,6 +168,7 @@ const Index = () => {
           {mobileMenuOpen && (
             <div className="md:hidden glass-morph border-t border-neon-cyan/20 animate-slide-in">
               <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+                <a href="#philosophy" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Философия</a>
                 <a href="#services" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Услуги</a>
                 <a href="#portfolio" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Портфолио</a>
                 <a href="#contact" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Контакты</a>
@@ -160,7 +211,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="py-32 px-6">
+        <section id="philosophy" className="py-32 px-6 scroll-mt-20">
           <div 
             className="container mx-auto"
             style={{
