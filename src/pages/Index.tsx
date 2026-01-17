@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -10,13 +10,24 @@ const Index = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [words] = useState(['инновация', 'эмоция', 'конверсия', 'эволюция']);
   const [currentWord, setCurrentWord] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  useState(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWord((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
-  });
+  }, [words.length]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const services = [
     {
@@ -97,11 +108,35 @@ const Index = () => {
                 Запустить проект
               </Button>
             </div>
+            <button 
+              className="md:hidden text-neon-cyan"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
+            </button>
           </div>
+          {mobileMenuOpen && (
+            <div className="md:hidden glass-morph border-t border-neon-cyan/20 animate-slide-in">
+              <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+                <a href="#services" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Услуги</a>
+                <a href="#portfolio" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Портфолио</a>
+                <a href="#contact" className="text-sm hover:text-neon-cyan transition-colors" onClick={() => setMobileMenuOpen(false)}>Контакты</a>
+                <Button className="bg-neon-cyan text-deep-black hover:bg-neon-cyan/90 neon-border w-full">
+                  Запустить проект
+                </Button>
+              </div>
+            </div>
+          )}
         </nav>
 
-        <section className="min-h-screen flex items-center justify-center px-6 pt-20">
-          <div className="container mx-auto text-center animate-fade-in">
+        <section ref={heroRef} className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
+          <div 
+            className="container mx-auto text-center animate-fade-in"
+            style={{
+              transform: `translateY(${scrollY * 0.3}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
+          >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow">
               Сайты для эпохи
               <br />
@@ -126,7 +161,13 @@ const Index = () => {
         </section>
 
         <section className="py-32 px-6">
-          <div className="container mx-auto">
+          <div 
+            className="container mx-auto"
+            style={{
+              transform: `translateY(${Math.max(0, scrollY - 400) * 0.1}px)`,
+              transition: 'transform 0.1s ease-out'
+            }}
+          >
             <h2 className="text-5xl font-bold text-center mb-4 gradient-text">Наша философия</h2>
             <p className="text-center text-muted-foreground mb-20 text-lg">Три принципа создания цифровых продуктов</p>
             
